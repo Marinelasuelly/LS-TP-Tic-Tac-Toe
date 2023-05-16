@@ -1,0 +1,52 @@
+#panel-control{
+    display: flex;   
+    background-color: rgba(255, 229, 212, 0.653);
+    padding: 30px;
+    margin: 30px;
+    border-radius: 15px;
+    border: outset 2px rgba(185, 148, 148, 0.345);
+    justify-content: space-between;
+    box-shadow: 0px 0px 10px rgb(62, 61, 61);
+    color: rgb(92, 91, 91);
+    letter-spacing: 0.1px;
+    align-items: center;
+    width: 570px;
+}
+
+/*Botoes -  normal, hover , disabled*/
+
+#btPlay ,#btTop{
+    border-radius: 5px;
+    padding: 8px;
+    background-color: rgb(250, 162, 133);
+    border: outset 2px rgb(232, 144, 144);
+    justify-self: left;
+}
+
+#btTop:hover , #btPlay:hover{
+    cursor: pointer;
+    background-color: rgb(233, 172, 145);
+    border-color:rgb(196, 152, 152);
+}
+#btTop:disabled , #btPlay:disabled{
+    cursor: not-allowed;
+    background-color: rgb(232, 199, 199);
+    border-color:rgb(240, 218, 218);
+}
+
+#gameTime, #pointsTop, #points{
+    background-color: rgba(211, 209, 209, 0.692);
+    border-radius: 5px;
+    padding: 4px 6px 1px 6px;
+    align-self: center;
+    margin: 5px;
+}
+
+.list-item{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+
+
