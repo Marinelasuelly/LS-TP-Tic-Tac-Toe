@@ -1,9 +1,7 @@
 import './assets/App.css';
 import {
   ControlPanel,
-  GamePanel,
-  Board
-
+  GamePanel
 } from "./components";
 
 function App() {
