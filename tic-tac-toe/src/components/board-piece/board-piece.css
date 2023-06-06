@@ -1,0 +1,11 @@
+.piece{
+    background-color: white;
+    border-radius: 4px;
+    margin: 4px;
+    border:none;
+    padding: 7px;
+}
+.piece:hover{
+    background-color: rgb(230, 229, 229);
+}
+
