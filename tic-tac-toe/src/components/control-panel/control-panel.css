@@ -2,11 +2,11 @@
     display: flex;   
     background-color: whitesmoke;
     padding: 30px;
-    margin: 30px;
+    margin-top: 20px;
     border-radius: 15px;
     border: outset 2px rgba(191, 179, 179, 0.345);
     justify-content: space-between;
-    box-shadow: 0px 0px 15px rgba(85, 85, 85, 0.832);
+    box-shadow: 0px 0px 20px rgba(155, 155, 155, 0.84);
     color: rgb(92, 91, 91);
     letter-spacing: 0.1px;
     align-items: center;
