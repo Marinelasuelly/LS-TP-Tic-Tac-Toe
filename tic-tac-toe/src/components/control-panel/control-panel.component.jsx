@@ -6,7 +6,7 @@ function ControlPanel(){
     return(
         <section id="panel-control">
                 
-            <button type="button" id="btPlay" disabled>Start</button>
+            <button type="button" id="btPlay" >Start</button>
 
             <dl className="list-item">
                 <dt>Tempo de Jogo:</dt>
