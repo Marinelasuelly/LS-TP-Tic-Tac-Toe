@@ -1,6 +1,5 @@
 .board{
     padding: 4px;
-  
 }
 .board-row{
     display: flex;
@@ -11,3 +10,20 @@
 .peca1, .peca2{
     border-right: 3px solid rgb(93, 92, 92,  0.727);
 }
+.board .tabOver{
+
+    text-align: center;
+    width: 117px;
+    height: 117px;
+    margin: 1px;
+    font-size: 400%;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(213, 213, 213, 0.81);
+    border-radius: 7px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
