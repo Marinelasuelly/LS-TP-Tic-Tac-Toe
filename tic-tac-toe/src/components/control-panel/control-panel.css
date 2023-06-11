@@ -24,6 +24,15 @@
     color:black;
 }
 
+#vs{
+    border-radius: 5px;
+    padding: 8px;
+    background-color:  rgba(188, 186, 186, 0.873);
+    border: outset 2px  rgb(230, 229, 229);
+    justify-self: left;
+    color:black;
+}
+
 #btTop:hover , #btPlay:hover{
     cursor: pointer;
     background-color:rgb(188, 186, 186);
