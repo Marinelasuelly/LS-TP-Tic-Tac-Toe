@@ -7,7 +7,7 @@ import {
 } from "../../components";
 
 
-function GamePanel({hide}){ //componete que contem os 9 tabuleiros
+function GamePanel({hide, nome}){ //componete que contem os 9 tabuleiros
 
    
     const [result, setResult] = useState(Array(9).fill(null));
@@ -18,7 +18,7 @@ function GamePanel({hide}){ //componete que contem os 9 tabuleiros
         const nextRes = result.slice();
         nextRes[i] = value;
         setResult(nextRes);
-        console.log(result);
+        console.log(nome);
     }
     
     checkResult(result);
@@ -60,7 +60,7 @@ function GamePanel({hide}){ //componete que contem os 9 tabuleiros
                 </div> 
             </div>
               
-            <ModalGameOver value = {checkResult(result)} isHidden = {(checkResult(result) == null)? true : false}/>
+            <ModalGameOver value = {checkResult(result)} isHidden = {(checkResult(result) == null)? true : false} nome = {nome}/>
         </section>
     );
 }
