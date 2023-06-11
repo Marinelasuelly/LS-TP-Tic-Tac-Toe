@@ -33,7 +33,7 @@ function ControlPanel({onStarClick, gameStart}){
                 <option value="vsComputador" >Jogar vs Computador</option>
             </select>     
             
-            <button type="button" id="btPlay" onClick={onStarClick} disabled = {mode == "none"? true : false}>Start</button>
+            <button type="button" id="btPlay" onClick={onStarClick} disabled = {mode == "none"? true : false || gameStart }>Start</button>
 
             <dl className="list-item">
                 <dt>Tempo de Jogo:</dt>
