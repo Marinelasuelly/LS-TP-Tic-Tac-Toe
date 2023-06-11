@@ -7,13 +7,13 @@ import {
 } from "../../components";
 
 
-function GamePanel(){ //componete que contem os 9 tabuleiros
+function GamePanel({hide}){ //componete que contem os 9 tabuleiros
 
    
     const [result, setResult] = useState(Array(9).fill(null));
     
 
-    function boardResultHandler(i,value){
+    const boardResultHandler = (i,value) => {
         
         const nextRes = result.slice();
         nextRes[i] = value;
@@ -25,7 +25,7 @@ function GamePanel(){ //componete que contem os 9 tabuleiros
     
     
     return(
-        <section id="game-panel">
+        <section id="game-panel" hidden ={hide}>
             <div className="game-row" id = "row1">
                 <div className="tab1">
                     <Board letter = {boardResultHandler} i={0}/>
