@@ -10,8 +10,31 @@ function Board({letter, i}){ // componente que contem 9 pecas
     const [piece, setPiece] = useState(Array(9).fill(null))//array de 9 elementos preeechido a null
 
     const result = checkResult(piece); //guarda letra de vencedor ou empate
-    
-    function handleClick(i){
+
+
+    function handleClick(i) {
+        const nextPiece = piece.slice();
+        if (nextPiece[i] || checkResult(piece)) { //verifica se a peca ja foi preechida ou se ja ha uma vitoria
+            return;
+        }      
+        if(symbol === "X"){ //Se o simbolo atual for X o seguinte sera O
+            nextPiece[i] = "X";
+            setSymbol("O");
+        }
+        else{
+            nextPiece[i] = "O";
+            setSymbol("X");
+        }
+        setPiece(nextPiece);
+
+        //se o modo escolhido for 1vsPC e se o tabuleiro nao estiver ganho
+        if (document.getElementById("vs").value !== "vsUtilizador" && checkResult(nextPiece) === null){
+             computador(nextPiece);
+        }
+       
+    }
+/* 
+function handleClick(i){
         if (document.getElementById("vs").value === "vsUtilizador"){
             handleClickvsUtilizador(i);
         }
@@ -19,8 +42,8 @@ function Board({letter, i}){ // componente que contem 9 pecas
             handleClickvsComputador(i);
         }
     }
-    
-    function handleClickvsUtilizador(i) {
+
+function handleClickvsUtilizador(i) {
         if (piece[i] || checkResult(piece)) { //verifica se a peca ja foi preechida ou se ja ha uma vitoria
             return;
         }
@@ -35,27 +58,9 @@ function Board({letter, i}){ // componente que contem 9 pecas
             setSymbol("X");
         }
         
-        setPiece(nextPiece); 
-        
+        setPiece(nextPiece);    
     }
-
-    function handleClickvsComputador(i) {
-        const nextPiece = piece.slice();
-        if (nextPiece[i] || checkResult(piece)) { //verifica se a peca ja foi preechida ou se ja ha uma vitoria
-            return;
-        }      
-        if(symbol === "X"){ //Se o simbolo atual for X o seguinte sera O
-            nextPiece[i] = "X";
-            setSymbol("O");
-        }
-        else{
-            nextPiece[i] = "O";
-            setSymbol("X");
-        }
-        setPiece(nextPiece);
-        computador(nextPiece);
-    }
-
+*/    
     function computador(nextPiece){
         const random = Math.floor(Math.random() * 8);
         if (nextPiece[random] || checkResult(piece)) { //verifica se a peca ja foi preechida ou se ja ha uma vitoria
@@ -113,7 +118,7 @@ function Board({letter, i}){ // componente que contem 9 pecas
                 </div>  
             )
             : // else mostra letra vencedora, se empate mosta E
-                (<div className="tabOver">{result}</div> )
+                (<div className="tabOver" onMouseMove ={() => letter(i,result)}>{result}</div> )
             }
             
              
