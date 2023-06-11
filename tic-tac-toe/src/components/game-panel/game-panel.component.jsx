@@ -1,15 +1,17 @@
 import "./game-panel.css"
 import React, { useState } from "react"
-
-
 import { checkResult } from "../../helpers";
-import {Board} from "../../components";
+import {
+    Board,
+    ModalGameOver
+} from "../../components";
 
 
 function GamePanel(){ //componete que contem os 9 tabuleiros
 
    
     const [result, setResult] = useState(Array(9).fill(null));
+    
 
     function boardResultHandler(i,value){
         
@@ -17,11 +19,11 @@ function GamePanel(){ //componete que contem os 9 tabuleiros
         nextRes[i] = value;
         setResult(nextRes);
         console.log(result);
-
     }
-
+    
     checkResult(result);
- 
+    
+    
     return(
         <section id="game-panel">
             <div className="game-row" id = "row1">
@@ -58,7 +60,7 @@ function GamePanel(){ //componete que contem os 9 tabuleiros
                 </div> 
             </div>
               
-            
+            <ModalGameOver value = {checkResult(result)} isHidden = {(checkResult(result) == null)? true : false}/>
         </section>
     );
 }
