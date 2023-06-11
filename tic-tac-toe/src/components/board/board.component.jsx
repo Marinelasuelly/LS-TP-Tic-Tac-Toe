@@ -9,8 +9,17 @@ function Board({letter, i}){ // componente que contem 9 pecas
     const [symbol, setSymbol] = useState("X");
     const [piece, setPiece] = useState(Array(9).fill(null))//array de 9 elementos preeechido a null
 
-    const result = checkResult(piece); //guarda letra de vencedor ou empate    
-
+    const result = checkResult(piece); //guarda letra de vencedor ou empate
+    
+    function handleClick(i){
+        if (document.getElementById("vs").value === "vsUtilizador"){
+            handleClickvsUtilizador(i);
+        }
+        else{
+            handleClickvsComputador(i);
+        }
+    }
+    
     function handleClickvsUtilizador(i) {
         if (piece[i] || checkResult(piece)) { //verifica se a peca ja foi preechida ou se ja ha uma vitoria
             return;
@@ -70,35 +79,35 @@ function Board({letter, i}){ // componente que contem 9 pecas
                 <div className="running">
                     <div className="board-row" id = "uno" >
                         <div className="peca1">
-                            <BoardPiece value = {piece[0]} onPieceClick={() =>handleClickvsComputador(0)} />
+                            <BoardPiece value = {piece[0]} onPieceClick={() =>handleClick(0)} />
                         </div>  
                         <div className="peca2">
-                            <BoardPiece value = {piece[1]} onPieceClick={() =>handleClickvsComputador(1)} />
+                            <BoardPiece value = {piece[1]} onPieceClick={() =>handleClick(1)} />
                         </div>  
                         <div className="peca3">
-                            <BoardPiece value = {piece[2]} onPieceClick={() =>handleClickvsComputador(2)} />
+                            <BoardPiece value = {piece[2]} onPieceClick={() =>handleClick(2)} />
                         </div>  
                     </div>
                     <div className="board-row" id = "dos">
                         <div className="peca1">
-                            <BoardPiece value = {piece[3]} onPieceClick={() =>handleClickvsComputador(3)} />
+                            <BoardPiece value = {piece[3]} onPieceClick={() =>handleClick(3)} />
                         </div>  
                         <div className="peca2">
-                            <BoardPiece value = {piece[4]} onPieceClick={() =>handleClickvsComputador(4)} />
+                            <BoardPiece value = {piece[4]} onPieceClick={() =>handleClick(4)} />
                         </div>  
                         <div className="peca3">
-                            <BoardPiece value = {piece[5]} onPieceClick={() =>handleClickvsComputador(5)} />
+                            <BoardPiece value = {piece[5]} onPieceClick={() =>handleClick(5)} />
                         </div>    
                     </div>
                     <div className="board-row" id = "tres">
                         <div className="peca1">
-                            <BoardPiece value = {piece[6]} onPieceClick={() =>handleClickvsComputador(6)} />
+                            <BoardPiece value = {piece[6]} onPieceClick={() =>handleClick(6)} />
                         </div>  
                         <div className="peca2">
-                            <BoardPiece value = {piece[7]} onPieceClick={() =>handleClickvsComputador(7)} />
+                            <BoardPiece value = {piece[7]} onPieceClick={() =>handleClick(7)} />
                         </div>  
                         <div className="peca3">
-                            <BoardPiece value = {piece[8]} onPieceClick={() =>handleClickvsComputador(8)} />
+                            <BoardPiece value = {piece[8]} onPieceClick={() =>handleClick(8)} />
                         </div>   
                     </div>
                 </div>  
