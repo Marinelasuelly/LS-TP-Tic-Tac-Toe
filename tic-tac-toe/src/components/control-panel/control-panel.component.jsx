@@ -5,7 +5,12 @@ import React from "react"
 function ControlPanel(){
     return(
         <section id="panel-control">
-                
+        
+            <select name="vs" id="vs">
+            <option value="vsUtilizador">Jogar vs Utilizador</option>
+            <option value="vsComputador">Jogar vs Computador</option>
+            </select>     
+            
             <button type="button" id="btPlay" >Start</button>
 
             <dl className="list-item">
