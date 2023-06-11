@@ -33,34 +33,7 @@ function Board({letter, i}){ // componente que contem 9 pecas
         }
        
     }
-/* 
-function handleClick(i){
-        if (document.getElementById("vs").value === "vsUtilizador"){
-            handleClickvsUtilizador(i);
-        }
-        else{
-            handleClickvsComputador(i);
-        }
-    }
-
-function handleClickvsUtilizador(i) {
-        if (piece[i] || checkResult(piece)) { //verifica se a peca ja foi preechida ou se ja ha uma vitoria
-            return;
-        }
-        
-        const nextPiece = piece.slice();
-        if(symbol === "X"){ //Se o simbolo atual for X o seguinte sera O
-            nextPiece[i] = "X";
-            setSymbol("O");
-        }
-        else{
-            nextPiece[i] = "O";
-            setSymbol("X");
-        }
-        
-        setPiece(nextPiece);    
-    }
-*/    
+    
     function computador(nextPiece){
         const random = Math.floor(Math.random() * 8);
         if (nextPiece[random] || checkResult(piece)) { //verifica se a peca ja foi preechida ou se ja ha uma vitoria
