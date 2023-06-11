@@ -1,1 +1,51 @@
+.modal{
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 250px;
+    background-color: rgba(245, 255, 255, 0.892);
+    border-radius: 20px;
 
+    box-shadow: 0px 0px 300px rgba(102, 110, 110, 0.84);
+
+
+}
+
+.messageWinner ,.message ,.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.messageWinner{
+    font-size:140%;
+    line-height: 10px;
+    font-weight: bold;
+    color: black
+}
+.message{
+    background-color: rgba(219, 236, 243, 0.895);
+    border: 5px dotted rgba(255, 255, 255, 0.895);
+    border-radius:20px 20px 0px 0px;
+    font-size:130%;
+    line-height: 10px;
+    font-weight: bold;
+    color: rgb(52, 82, 89);
+}
+
+.againbtn{
+    border-radius: 5px;
+    padding: 5px;
+    background-color:  rgb(232, 232, 232);
+    border: outset 2px rgb(233, 233, 233);
+    color:black;
+}
+.againbtn:hover{
+    cursor: pointer;
+    background-color:rgba(215, 215, 215, 0.873);
+    border-color:rgb(230, 229, 229);
+}
