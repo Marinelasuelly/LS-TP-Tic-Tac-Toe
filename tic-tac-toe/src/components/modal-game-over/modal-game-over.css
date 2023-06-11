@@ -5,7 +5,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 500px;
-    height: 250px;
+    height: 270px;
     background-color: rgba(245, 255, 255, 0.892);
     border-radius: 20px;
 
@@ -14,18 +14,28 @@
 
 }
 
-.messageWinner ,.message ,.btn{
+.messageWinner ,.message ,.btn, .messageName{
     display: flex;
+
     justify-content: center;
     align-items: center;
-    padding: 30px;
+    padding: 25px;
 }
 
 .messageWinner{
+    padding-top: 35px;
     font-size:140%;
     line-height: 10px;
     font-weight: bold;
     color: black
+}
+
+.messageName{
+    padding-top: 0px;
+    font-size:140%;
+    line-height: 10px;
+    font-weight: bold;
+    color: rgb(52, 52, 52)
 }
 .message{
     background-color: rgba(219, 236, 243, 0.895);
