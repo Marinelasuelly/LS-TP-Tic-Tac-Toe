@@ -5,15 +5,11 @@ import React from "react"
 
 function BoardPiece({value, onPieceClick}){ //peca unica de um tabuleiro
     
-    function isFull(){
-      if(value != null)
-        return true;
-      return false;
-    }
+const isFull = (value!=null)?  true : false;
 
     return(
         <section id="boardPiece">
-              <button className="piece"  disabled = {isFull()} onClick = {onPieceClick}  > {value} </button>
+              <button className="piece"  disabled = {isFull} onClick = {onPieceClick}  > {value} </button>
         </section>
     );
 
