@@ -3,6 +3,15 @@ import "./control-panel.css"
 import React from "react"
 
 function ControlPanel(){
+    function nome(){
+        if (document.getElementById("vs").value === "vsUtilizador"){
+            let nome1 = prompt("Nome do primeiro jogador:");
+            let nome2 = prompt("Nome do segundo jogador:");
+        }
+        else{
+            let nome1 = prompt("Nome do jogador:");
+        } 
+    }
     return(
         <section id="panel-control">
         
