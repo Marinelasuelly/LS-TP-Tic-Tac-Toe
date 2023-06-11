@@ -20,7 +20,7 @@ function ControlPanel(){
             <option value="vsComputador">Jogar vs Computador</option>
             </select>     
             
-            <button type="button" id="btPlay" >Start</button>
+            <button type="button" id="btPlay" onClick={nome}>Start</button>
 
             <dl className="list-item">
                 <dt>Tempo de Jogo:</dt>
