@@ -3,18 +3,32 @@ import "./modal-game-over.css"
 
 import React from "react"
 
-function BoardPiece({value, win , loss}){ //peca unica de um tabuleiro
-    
-//const ( win ,loss ) => {}
+function ModalGameOver({value, isHidden}){ //peca unica de um tabuleiro
 
+const writeResult = ()  =>{
+
+    if (value == null) 
+        return "Time Over. Não houve vencedor!"
+    if(value === "E"){
+        return "Empate!"
+    }else{
+        return `Letra '${value}' venceu!`
+    }
+
+}
 
     return(
-        <section id="boardPiece" className={onPieceClick}>
-            <div> {value} </div>
-              <button ClassName = "againbtn" onClick = {gameStart}> Jogar outra vez </button>
+        <section id="modal" className="modal" hidden = {isHidden}>
+            <div className="message"> Fim de Jogo </div>
+            <div className="messageWinner"> {writeResult()} </div>
+            <div className="btn">
+                <button className = "againbtn" > Jogar outra vez </button>
+            </div>
+            
+   
         </section>
     );
 
 }
 
-export default BoardPiece
+export default ModalGameOver
