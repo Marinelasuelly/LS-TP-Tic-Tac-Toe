@@ -24,26 +24,15 @@ function App() {
       const nome0 = prompt("Nome do primeiro jogador:");
       const nome1 = prompt("Nome do segundo jogador:");
 
-      setName(nome0, 0);
-      setName(nome1 ,1);
-      console.log(nome);
-
-      //names = {nome0,nome1}
-      //console.log(names);
+      setNome([nome0, nome1]);
     }
     else{
         const nome0 = prompt("Nome do jogador:");
-        setName(nome0, 0);
+        setNome([nome0]);
     }
   };
 
-  const setName = (name, i)=>{
-    const nextName = nome.slice();
-    nextName[i] = name;
-    setNome(nextName);
-    console.log(nome);
-  }
-
+  console.log(nome);
 
   return (
     <div className="main-content">
