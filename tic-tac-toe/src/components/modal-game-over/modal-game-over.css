@@ -24,15 +24,15 @@
 
 .messageWinner{
     padding-top: 35px;
-    font-size:140%;
+    font-size:150%;
     line-height: 10px;
     font-weight: bold;
     color: black
 }
 
 .messageName{
-    padding-top: 0px;
-    font-size:140%;
+    padding-top: 5px;
+    font-size:130%;
     line-height: 10px;
     font-weight: bold;
     color: rgb(52, 52, 52)
@@ -41,7 +41,7 @@
     background-color: rgba(219, 236, 243, 0.895);
     border: 5px dotted rgba(255, 255, 255, 0.895);
     border-radius:20px 20px 0px 0px;
-    font-size:130%;
+    font-size:160%;
     line-height: 10px;
     font-weight: bold;
     color: rgb(52, 82, 89);
