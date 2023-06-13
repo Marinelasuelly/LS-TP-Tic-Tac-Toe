@@ -10,6 +10,7 @@ const writeResult = ()  =>{
     if (value == null) 
         return "Time Over. Não houve vencedor!"
     if(value === "E"){
+        winnerName = `Bom Jogo ${nome[0]} e ${nome[1] == null? "Computador": nome[1]}!`
         return "Empate!"
     }else{
         console.log(nome);
