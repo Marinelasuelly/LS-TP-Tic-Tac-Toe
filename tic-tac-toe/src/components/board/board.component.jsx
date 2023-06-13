@@ -4,28 +4,23 @@ import {BoardPiece} from "../../components";
 import React, { useState } from "react"
 import { checkResult } from "../../helpers";
 
-function Board({letter, i}){ // componente que contem 9 pecas
+function Board({letter, i, symbol, changeSymbol}){ // componente que contem 9 pecas
     
-    const [symbol, setSymbol] = useState("X");
+   
     const [piece, setPiece] = useState(Array(9).fill(null))//array de 9 elementos preeechido a null
 
     const result = checkResult(piece); //guarda letra de vencedor ou empate
-
-
+   
     function handleClick(i) {
         const nextPiece = piece.slice();
         if (nextPiece[i] || checkResult(piece)) { //verifica se a peca ja foi preechida ou se ja ha uma vitoria
             return;
-        }      
-        if(symbol === "X"){ //Se o simbolo atual for X o seguinte sera O
-            nextPiece[i] = "X";
-            setSymbol("O");
-        }
-        else{
-            nextPiece[i] = "O";
-            setSymbol("X");
-        }
+        }  
+          
+        nextPiece[i] = symbol;
+        changeSymbol(symbol);
         setPiece(nextPiece);
+
 
         //se o modo escolhido for 1vsPC e se o tabuleiro nao estiver ganho
         if (document.getElementById("vs").value !== "vsUtilizador" && checkResult(nextPiece) === null){
@@ -42,11 +37,11 @@ function Board({letter, i}){ // componente que contem 9 pecas
         }
         if(symbol === "X"){ //Se o simbolo atual for X o seguinte sera O   
             nextPiece[random] = "O";
-            setSymbol("X");
+            changeSymbol("O")
         }
         else{
             nextPiece[random] = "X";
-            setSymbol("O");
+            changeSymbol("X");
         }
         setPiece(nextPiece);
     }
