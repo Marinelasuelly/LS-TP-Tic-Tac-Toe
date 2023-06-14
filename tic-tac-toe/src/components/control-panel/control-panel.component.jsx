@@ -40,16 +40,9 @@ function ControlPanel({onStarClick, gameStart}){
                 <dd id="gameTime">0</dd>
             </dl>
             <dl className="list-item">
-                <dt>Pontuação TOP:</dt>
-                <dd id="pointsTop">0</dd>
+                <dt >Proximo Jogador:</dt>
+                <dd id="nextplayer">X</dd>
             </dl>
-            <dl className="list-item">
-                <dt>Pontuação:</dt>
-                <dd id="points">0</dd>
-            </dl>
-            <div id="top10">
-                <button id="btTop">Ver TOP 10</button>
-            </div>
             
         </section>
     );
