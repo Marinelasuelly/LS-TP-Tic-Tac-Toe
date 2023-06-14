@@ -30,7 +30,7 @@ function App() {
     else{
         const nome0 = prompt("Nome do jogador:");
         setNome([nome0]);
-        alert("Primeiro Jogador: "+nome0);
+        alert("Primeiro Jogador: "+nome0 + ": X ");
     }
   };
 
