@@ -1,97 +1,87 @@
-import "./board.css"
-import {BoardPiece} from "../../components";
-
+import "./game-panel.css"
 import React, { useState } from "react"
 import { checkResult } from "../../helpers";
+import {
+    Board,
+    ModalGameOver
+} from "../../components";
 
-function Board({letter, i, symbol, changeSymbol}){ // componente que contem 9 pecas
-    
+
+function GamePanel({hide, nome}){ //componete que contem os 9 tabuleiros
+
    
-    const [piece, setPiece] = useState(Array(9).fill(null))//array de 9 elementos preeechido a null
+    const [result, setResult] = useState(Array(9).fill(null));
+    const [symbol, setSymbol] = useState("X");
+    const [activePieceIndex, setActivePieceIndex] = useState(null);
 
-    const result = checkResult(piece); //guarda letra de vencedor ou empate
-   
-    function handleClick(i) {
-        const nextPiece = piece.slice();
-        if (nextPiece[i] || checkResult(piece)) { //verifica se a peca ja foi preechida ou se ja ha uma vitoria
-            return;
-        }  
-          
-        nextPiece[i] = symbol;
-        changeSymbol(symbol);
-        setPiece(nextPiece);
-
-
-        //se o modo escolhido for 1vsPC e se o tabuleiro nao estiver ganho
-        if (document.getElementById("vs").value !== "vsUtilizador" && checkResult(nextPiece) === null){
-             computador(nextPiece);
-        }
-       
+    const boardResultHandler = (i,value) => {
+        
+        const nextRes = result.slice();
+        nextRes[i] = value;
+        setResult(nextRes);
     }
     
-    function computador(nextPiece){
-        const random = Math.floor(Math.random() * 8);
-        if (nextPiece[random] || checkResult(piece)) { //verifica se a peca ja foi preechida ou se ja ha uma vitoria
-            computador(nextPiece);
-            return;
-        }
-        if(symbol === "X"){ //Se o simbolo atual for X o seguinte sera O   
-            nextPiece[random] = "O";
-            changeSymbol("O")
-        }
-        else{
-            nextPiece[random] = "X";
-            changeSymbol("X");
-        }
-        setPiece(nextPiece);
+    checkResult(result);
+
+    const handleSymbol = (value) =>{ value === "X"? setSymbol("O") : setSymbol("X") }
+
+    const handleClickedPiece = (indexClicked) => {
+        setActivePieceIndex(indexClicked);
     }
 
+    const isBoardActive = (i) =>{
+
+        if(activePieceIndex === null){
+            return false;
+        }
+        if(i === activePieceIndex ||result[activePieceIndex]!==null){
+            return false;
+        }
+        return true;
+
+    } 
+
+    
     return(
-        <section className="board" >
-            {result == null ? ( // se nao existir vencedor ou empate mostra o tabuleiro normal
-                <div className="running">
-                    <div className="board-row" id = "uno" >
-                        <div className="peca1">
-                            <BoardPiece value = {piece[0]} onPieceClick={() =>handleClick(0)} />
-                        </div>  
-                        <div className="peca2">
-                            <BoardPiece value = {piece[1]} onPieceClick={() =>handleClick(1)} />
-                        </div>  
-                        <div className="peca3">
-                            <BoardPiece value = {piece[2]} onPieceClick={() =>handleClick(2)} />
-                        </div>  
-                    </div>
-                    <div className="board-row" id = "dos">
-                        <div className="peca1">
-                            <BoardPiece value = {piece[3]} onPieceClick={() =>handleClick(3)} />
-                        </div>  
-                        <div className="peca2">
-                            <BoardPiece value = {piece[4]} onPieceClick={() =>handleClick(4)} />
-                        </div>  
-                        <div className="peca3">
-                            <BoardPiece value = {piece[5]} onPieceClick={() =>handleClick(5)} />
-                        </div>    
-                    </div>
-                    <div className="board-row" id = "tres">
-                        <div className="peca1">
-                            <BoardPiece value = {piece[6]} onPieceClick={() =>handleClick(6)} />
-                        </div>  
-                        <div className="peca2">
-                            <BoardPiece value = {piece[7]} onPieceClick={() =>handleClick(7)} />
-                        </div>  
-                        <div className="peca3">
-                            <BoardPiece value = {piece[8]} onPieceClick={() =>handleClick(8)} />
-                        </div>   
-                    </div>
+        <section id="game-panel" hidden ={hide}>
+            <div className="game-row" id = "row1">
+                <div className="tab1">
+                    <Board letter = {boardResultHandler} index={0} symbol = {symbol} changeSymbol = {handleSymbol} onPieceClick={handleClickedPiece} isBoardActive = {isBoardActive(0)}/>
                 </div>  
-            )
-            : // else mostra letra vencedora, se empate mosta E
-                (<div className="tabOver" onMouseMove ={() => letter(i,result)}>{result}</div> )
-            }
-            
-             
+                <div className="tab2">
+                    <Board letter = {boardResultHandler} index={1} symbol = {symbol} changeSymbol = {handleSymbol} onPieceClick={handleClickedPiece} isBoardActive = {isBoardActive(1)}/>
+                </div>  
+                <div className="tab3">
+                    <Board letter = {boardResultHandler} index={2} symbol = {symbol} changeSymbol = {handleSymbol} onPieceClick={handleClickedPiece} isBoardActive = {isBoardActive(2)}/>
+                </div>  
+            </div>
+            <div className="game-row" id = "row2">
+                <div className="tab1">
+                    <Board letter = {boardResultHandler} index={3} symbol = {symbol} changeSymbol = {handleSymbol} onPieceClick={handleClickedPiece} isBoardActive = {isBoardActive(3)}/>
+                </div>  
+                <div className="tab2">
+                    <Board letter = {boardResultHandler} index={4} symbol = {symbol} changeSymbol = {handleSymbol} onPieceClick={handleClickedPiece} isBoardActive = {isBoardActive(4)}/>
+                </div>  
+                <div className="tab3">
+                    <Board letter = {boardResultHandler} index={5} symbol = {symbol} changeSymbol = {handleSymbol} onPieceClick={handleClickedPiece} isBoardActive = {isBoardActive(5)}/>
+                </div> 
+            </div>
+            <div className="game-row" id = "row3">
+                <div className="tab1">
+                    <Board letter = {boardResultHandler} index={6} symbol = {symbol} changeSymbol = {handleSymbol} onPieceClick={handleClickedPiece} isBoardActive = {isBoardActive(6)}/>
+                </div>  
+                <div className="tab2">
+                    <Board letter = {boardResultHandler} index={7} symbol = {symbol} changeSymbol = {handleSymbol} onPieceClick={handleClickedPiece} isBoardActive = {isBoardActive(7)}/>
+                </div>  
+                <div className="tab3">
+                    <Board letter = {boardResultHandler} index={8} symbol = {symbol} changeSymbol = {handleSymbol} onPieceClick={handleClickedPiece} isBoardActive = {isBoardActive(8)}/>
+                </div> 
+            </div>
+              
+            <ModalGameOver value = {checkResult(result)} isHidden = {(checkResult(result) == null)? true : false} nome = {nome}/>
         </section>
     );
 }
 
-export default Board
+
+export default GamePanel
