@@ -26,6 +26,7 @@ function Board({letter, index, symbol, changeSymbol, onPieceClick, isBoardActive
         //se o modo escolhido for 1vsPC e se o tabuleiro nao estiver ganho
         if (document.getElementById("vs").value !== "vsUtilizador" && checkResult(nextPiece) === null){
              computador(nextPiece);
+            //onPieceClick(null); descomentar linha para que jogo de pc seja totalmente livre
         }
        
     }
