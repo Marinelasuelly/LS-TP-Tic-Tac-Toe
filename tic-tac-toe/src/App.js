@@ -23,12 +23,14 @@ function App() {
     if (document.getElementById("vs").value === "vsUtilizador"){
       const nome0 = prompt("Nome do primeiro jogador:");
       const nome1 = prompt("Nome do segundo jogador:");
-
-      setNome([nome0, nome1]);
+      const primeirojogador = Math.round(Math.random()) + 1;
+      primeirojogador === 1 ? setNome([nome0, nome1]) : setNome([nome1, nome0]);
+      primeirojogador === 1 ? alert("Primeiro Jogador: "+ nome0 + ": X ") : alert("Primeiro Jogador: "+ nome1 + ": X ");
     }
     else{
         const nome0 = prompt("Nome do jogador:");
         setNome([nome0]);
+        alert("Primeiro Jogador: "+nome0);
     }
   };
 
