@@ -45,7 +45,7 @@
     border-color:rgba(202, 199, 199, 0.475);
 }
 
-#gameTime, #pointsTop, #points{
+#gameTime, #nextplayer{
     background-color: rgba(211, 209, 209, 0.514);
     border-radius: 5px;
     padding: 4px 6px 1px 6px;
