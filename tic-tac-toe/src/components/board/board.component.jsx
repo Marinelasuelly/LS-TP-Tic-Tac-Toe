@@ -4,14 +4,14 @@ import {BoardPiece} from "../../components";
 import React, { useState } from "react"
 import { checkResult } from "../../helpers";
 
-function Board({letter, i, symbol, changeSymbol}){ // componente que contem 9 pecas
+function Board({letter, index, symbol, changeSymbol, onPieceClick, isBoardActive} ){ // componente que contem 9 pecas
     
    
     const [piece, setPiece] = useState(Array(9).fill(null))//array de 9 elementos preeechido a null
 
     const result = checkResult(piece); //guarda letra de vencedor ou empate
    
-    function handleClick(i) {
+    const handleClick = (i) => {
         const nextPiece = piece.slice();
         if (nextPiece[i] || checkResult(piece)) { //verifica se a peca ja foi preechida ou se ja ha uma vitoria
             return;
@@ -20,7 +20,8 @@ function Board({letter, i, symbol, changeSymbol}){ // componente que contem 9 pe
         nextPiece[i] = symbol;
         changeSymbol(symbol);
         setPiece(nextPiece);
-
+        
+        onPieceClick(i);
 
         //se o modo escolhido for 1vsPC e se o tabuleiro nao estiver ganho
         if (document.getElementById("vs").value !== "vsUtilizador" && checkResult(nextPiece) === null){
@@ -29,20 +30,14 @@ function Board({letter, i, symbol, changeSymbol}){ // componente que contem 9 pe
        
     }
     
-    function computador(nextPiece){
+    const computador = (nextPiece) =>{
         const random = Math.floor(Math.random() * 8);
         if (nextPiece[random] || checkResult(piece)) { //verifica se a peca ja foi preechida ou se ja ha uma vitoria
             computador(nextPiece);
             return;
         }
-        if(symbol === "X"){ //Se o simbolo atual for X o seguinte sera O   
-            nextPiece[random] = "O";
-            changeSymbol("O")
-        }
-        else{
-            nextPiece[random] = "X";
-            changeSymbol("X");
-        }
+        symbol === "X"? nextPiece[random] = "O" : nextPiece[random] = "X" 
+        changeSymbol(nextPiece[random]);
         setPiece(nextPiece);
     }
 
@@ -52,46 +47,46 @@ function Board({letter, i, symbol, changeSymbol}){ // componente que contem 9 pe
                 <div className="running">
                     <div className="board-row" id = "uno" >
                         <div className="peca1">
-                            <BoardPiece value = {piece[0]} onPieceClick={() =>handleClick(0)} />
+                            <BoardPiece value = {piece[0]} onPieceClick={() =>handleClick(0)} isActive = {isBoardActive}/>
                         </div>  
                         <div className="peca2">
-                            <BoardPiece value = {piece[1]} onPieceClick={() =>handleClick(1)} />
-                        </div>  
+                            <BoardPiece value = {piece[1]} onPieceClick={() =>handleClick(1)} isActive = {isBoardActive}/>
+                        </div> 
                         <div className="peca3">
-                            <BoardPiece value = {piece[2]} onPieceClick={() =>handleClick(2)} />
+                            <BoardPiece value = {piece[2]} onPieceClick={() =>handleClick(2)} isActive = {isBoardActive}/>
                         </div>  
                     </div>
                     <div className="board-row" id = "dos">
                         <div className="peca1">
-                            <BoardPiece value = {piece[3]} onPieceClick={() =>handleClick(3)} />
+                            <BoardPiece value = {piece[3]} onPieceClick={() =>handleClick(3)} isActive = {isBoardActive}/>
                         </div>  
                         <div className="peca2">
-                            <BoardPiece value = {piece[4]} onPieceClick={() =>handleClick(4)} />
+                            <BoardPiece value = {piece[4]} onPieceClick={() =>handleClick(4)} isActive = {isBoardActive}/>
                         </div>  
                         <div className="peca3">
-                            <BoardPiece value = {piece[5]} onPieceClick={() =>handleClick(5)} />
+                            <BoardPiece value = {piece[5]} onPieceClick={() =>handleClick(5)} isActive = {isBoardActive}/>
                         </div>    
                     </div>
                     <div className="board-row" id = "tres">
                         <div className="peca1">
-                            <BoardPiece value = {piece[6]} onPieceClick={() =>handleClick(6)} />
+                            <BoardPiece value = {piece[6]} onPieceClick={() =>handleClick(6)} isActive = {isBoardActive}/>
                         </div>  
                         <div className="peca2">
-                            <BoardPiece value = {piece[7]} onPieceClick={() =>handleClick(7)} />
+                            <BoardPiece value = {piece[7]} onPieceClick={() =>handleClick(7)} isActive = {isBoardActive}/>
                         </div>  
                         <div className="peca3">
-                            <BoardPiece value = {piece[8]} onPieceClick={() =>handleClick(8)} />
+                            <BoardPiece value = {piece[8]} onPieceClick={() =>handleClick(8)} isActive = {isBoardActive}/>
                         </div>   
                     </div>
                 </div>  
             )
             : // else mostra letra vencedora, se empate mosta E
-                (<div className="tabOver" onMouseMove ={() => letter(i,result)}>{result}</div> )
+                (<div className="tabOver" onMouseMove ={() => letter(index,result)}>{result}</div>)
             }
             
              
         </section>
     );
 }
-
+//!(activePieceIndex===null)&&(activePieceIndex !== index)
 export default Board
