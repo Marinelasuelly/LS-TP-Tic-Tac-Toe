@@ -9,6 +9,7 @@ function App() {
 
   const [gameStarted, setGameStarted] = useState(false);
   const [nome, setNome] = useState(Array(2).fill(null));
+  const [symbol, setSymbol] = useState("X");
   let names;
 
   const handleGameStart = () => {
@@ -38,8 +39,8 @@ function App() {
 
   return (
     <div className="main-content">
-      <ControlPanel onStarClick = {handleGameStart} gameStart = {gameStarted}/>
-      <GamePanel hide = {gameStarted? false : true} nome = {nome}/> 
+      <ControlPanel onStarClick = {handleGameStart} gameStart = {gameStarted} gameStart = {gameStarted} symbol = {symbol}/>
+      <GamePanel hide = {gameStarted? false : true} nome = {nome} symbol = {symbol} setSymbol = {setSymbol}/> 
     </div>
   );
 }
