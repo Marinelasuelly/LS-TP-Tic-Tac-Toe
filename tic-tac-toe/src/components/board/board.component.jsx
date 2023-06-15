@@ -22,11 +22,7 @@ function Board({letter, index, symbol, changeSymbol, onPieceClick, isBoardActive
         setPiece(nextPiece);
         
         onPieceClick(i);
-        if (symbol === "X"){
-            document.getElementById("nextplayer").textContent = "O";
-        } else {
-            document.getElementById("nextplayer").textContent = "X";
-        }
+        
         //se o modo escolhido for 1vsPC e se o tabuleiro nao estiver ganho
         if (document.getElementById("vs").value !== "vsUtilizador" && checkResult(nextPiece) === null){
              computador(nextPiece);
