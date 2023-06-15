@@ -7,7 +7,7 @@ import {
 } from "../../components";
 
 
-function GamePanel({hide, nome}){ //componete que contem os 9 tabuleiros
+function GamePanel({hide, nome, symbol, setSymbol}){ //componete que contem os 9 tabuleiros
 
    
     const [result, setResult] = useState(Array(9).fill(null));
