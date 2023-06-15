@@ -2,7 +2,7 @@ import "./control-panel.css"
 
 import React, { useState } from "react"
 
-function ControlPanel({onStarClick, gameStart}){
+function ControlPanel({onStarClick, gameStart, symbol}){
 
     const [mode, setMode] = useState("none");
     const handleSetMode = () =>{
@@ -41,7 +41,7 @@ function ControlPanel({onStarClick, gameStart}){
             </dl>
             <dl className="list-item">
                 <dt >Proximo Jogador:</dt>
-                <dd id="nextplayer">X</dd>
+                <dd id="nextplayer">{symbol}</dd>
             </dl>
             
         </section>
