@@ -11,7 +11,7 @@ function GamePanel({hide, nome}){ //componete que contem os 9 tabuleiros
 
    
     const [result, setResult] = useState(Array(9).fill(null));
-    const [symbol, setSymbol] = useState("X");
+    
     const [activePieceIndex, setActivePieceIndex] = useState(null);
 
     const boardResultHandler = (i,value) => {
