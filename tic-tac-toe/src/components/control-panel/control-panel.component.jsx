@@ -2,7 +2,7 @@ import "./control-panel.css"
 
 import React, { useState } from "react"
 
-function ControlPanel({onStarClick, gameStart, symbol}){
+function ControlPanel({onStarClick, gameStart, symbol, timer}){
 
     const [mode, setMode] = useState("none");
     const handleSetMode = () =>{
@@ -37,7 +37,7 @@ function ControlPanel({onStarClick, gameStart, symbol}){
 
             <dl className="list-item">
                 <dt>Tempo de Jogo:</dt>
-                <dd id="gameTime">0</dd>
+                <dd id="gameTime">{timer}</dd>
             </dl>
             <dl className="list-item">
                 <dt >Proximo Jogador:</dt>
