@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState , useEffect} from 'react';
 import './assets/App.css';
 import {
   ControlPanel,
@@ -6,11 +6,64 @@ import {
 } from "./components";
 
 function App() {
-
+  let timerId;
+  const TIMEOUTGAME = 10;
   const [gameStarted, setGameStarted] = useState(false);
   const [nome, setNome] = useState(Array(2).fill(null));
+
   const [symbol, setSymbol] = useState("X");
-  let names;
+  const [timer,setTimer] = useState(TIMEOUTGAME);
+
+
+  /*useEffect(() => {
+    if (gameStarted) {
+      timerId = setInterval(() => {
+        let nextTimer;
+        setTimer((previousState) => {
+          nextTimer = previousState - 1;
+          return nextTimer;
+        });
+
+        if (nextTimer === 0) {
+          setGameStarted(false);
+          return;
+        }
+      }, 1000);
+    } else if (timer !== TIMEOUTGAME) {
+      setTimer(TIMEOUTGAME);
+    }
+
+    return () => {
+      if (timerId) {
+        clearInterval(timerId);
+      }
+    };
+  }, [gameStarted]);
+  */
+  useEffect(() => {
+    let timerId;
+  
+    if (gameStarted) {
+      timerId = setInterval(() => {
+        setTimer((previousState) => {
+          const nextTimer = previousState - 1;
+  
+          if (nextTimer === 0) {
+            setGameStarted(false);
+            clearInterval(timerId); // Interrompe o intervalo quando o temporizador atinge zero
+          }
+  
+          return nextTimer;
+        });
+      }, 1000);
+    } else if (timer !== TIMEOUTGAME) {
+      setTimer(TIMEOUTGAME);
+    }
+  
+    return () => {
+      clearInterval(timerId); // Limpa o intervalo quando o componente é desmontado
+    };
+  }, [gameStarted, timer]);
 
   const handleGameStart = () => {
     if (gameStarted) {
@@ -35,12 +88,10 @@ function App() {
     }
   };
 
-  console.log(nome);
-
   return (
     <div className="main-content">
-      <ControlPanel onStarClick = {handleGameStart} gameStart = {gameStarted} gameStart = {gameStarted} symbol = {symbol}/>
-      <GamePanel hide = {gameStarted? false : true} nome = {nome} symbol = {symbol} setSymbol = {setSymbol}/> 
+      <ControlPanel onStarClick = {handleGameStart} gameStart = {gameStarted} symbol = {symbol} timer = {timer}/>
+      <GamePanel gameStarted = {gameStarted? false : true} nome = {nome} symbol = {symbol} setSymbol = {setSymbol} timer = {timer}/> 
     </div>
   );
 }
