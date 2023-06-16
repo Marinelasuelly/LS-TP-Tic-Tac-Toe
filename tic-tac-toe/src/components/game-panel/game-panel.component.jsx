@@ -7,7 +7,7 @@ import {
 } from "../../components";
 
 
-function GamePanel({hide, nome, symbol, setSymbol}){ //componete que contem os 9 tabuleiros
+function GamePanel({gameStarted, nome, symbol, setSymbol, timer}){ //componete que contem os 9 tabuleiros
 
    
     const [result, setResult] = useState(Array(9).fill(null));
@@ -43,7 +43,7 @@ function GamePanel({hide, nome, symbol, setSymbol}){ //componete que contem os 9
 
     
     return(
-        <section id="game-panel" hidden ={hide}>
+        <section id="game-panel" hidden ={gameStarted}>
             <div className="game-row" id = "row1">
                 <div className="tab1">
                     <Board letter = {boardResultHandler} index={0} symbol = {symbol} changeSymbol = {handleSymbol} onPieceClick={handleClickedPiece} isBoardActive = {isBoardActive(0)}/>
@@ -78,7 +78,7 @@ function GamePanel({hide, nome, symbol, setSymbol}){ //componete que contem os 9
                 </div> 
             </div>
               
-            <ModalGameOver value = {checkResult(result)} isHidden = {(checkResult(result) == null)? true : false} nome = {nome}/>
+            <ModalGameOver value = {checkResult(result)} isHidden = {(checkResult(result) == null)? true : false} nome = {nome}  timer={timer}/>
         </section>
     );
 }
